@@ -1,0 +1,12 @@
+Arcanine
+--------
+
+- Arcanine is an IRC bot written in Ruby using the awesome on_irc library!
+
+- Arcanine aims to be pluggable, but is a longs way from it! :[
+
+- Arcanine is full of messy code and bugs, some features are even broken, some features call programs that might not even be installed on certain systems.
+
+- Arcanine is named after a pokemon!
+
+- Arcanine is a work in progress.
