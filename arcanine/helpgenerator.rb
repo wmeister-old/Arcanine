@@ -1,7 +1,6 @@
-require 'rubygems'
 require 'syntax/convertors/abstract'
 
-class HelpGenerator < Syntax::Convertors::Abstract
+class Arcanine::HelpGenerator < Syntax::Convertors::Abstract
   def convert(text)
     commands = {}
     cur_cmd  = nil

@@ -1,0 +1,8 @@
+--- 
+:realname: pokebot1986
+:ident: arcanine
+:nick: arcanine
+:servers: 
+- :host: irc.freenode.net
+  :name: freenode
+  :port: 6667
