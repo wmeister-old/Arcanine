@@ -1,10 +1,10 @@
 require 'on_irc'
+require 'arcanine/trigger'
 
 class Arcanine
-	attr_reader :monitor
+	attr_reader :monitor, :trigger_char, :help
 
   def initialize(template)
-    @help = Arcanine::HelpGenerator.for_syntax('ruby').convert(File.read 'bot-eval.rb')
     @trigger_char = template[:trigger_char] || template['trigger_char'] || '@'
     @realname = __realname = template[:realname] || template['realname']
     @ident = __ident = template[:ident] || template['ident']
@@ -25,7 +25,36 @@ class Arcanine
 				end
       end
     end
+	  load_triggers
   end
+
+	def trigger_files
+		Dir.glob(File.expand_path(File.dirname(__FILE__)) + '/arcanine/trigger/*.rb')
+	end
+
+	def load_triggers
+		files    = trigger_files
+		contents = ''
+
+		for file in files
+			begin 
+	 			require file
+			rescue Exception => e
+				puts "Error in #{file}: #{e}"
+				exit
+			end
+			contents << File.read(file)
+		end
+
+    @help = Arcanine::HelpGenerator.for_syntax('ruby').convert(contents)
+	end
+
+	def test_triggers(irc, msg)
+		puts "msg == #{msg}"
+		for trigger in Arcanine::Trigger.all
+			trigger.send :run, irc and break if trigger.send :match, msg
+    end
+	end
 
   def connect_all
     @bot.on :all do
@@ -36,14 +65,11 @@ class Arcanine
 
 		@bot.on :privmsg do
 			if params[0][0,1] == '#' && arcanine.monitor[server.name].include?(params[0])
-				begin
-			    eval File.read('bot-eval.rb')
-			  rescue Exception => error
-			    puts "Eval Error: #{error}"
-			  end
+			  if params[1][0,1] == arcanine.trigger_char
+    			arcanine.test_triggers(self, params[1][1..-1])
+  			end
 			elsif params[0][0,1] != '#'
 				# do something
-				puts ""
 			end
     end
 

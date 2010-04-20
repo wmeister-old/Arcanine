@@ -4,7 +4,7 @@ class Arcanine::Trigger::Commands < Arcanine::Trigger
   end
 
   def self.action(irc)
-    irc.respond $help.keys.join ', '
+    irc.respond Arcanine::Trigger.help.keys.join ', '
   end
 end
 

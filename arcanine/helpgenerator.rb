@@ -27,6 +27,6 @@ class Arcanine::HelpGenerator < Syntax::Convertors::Abstract
         end
       end
     end
-    return commands
+    Arcanine::Trigger.help commands
   end
 end

@@ -1,14 +1,16 @@
 class Arcanine::Trigger::Help < Arcanine::Trigger
   def self.regex
-    /^help\s+(#{$help.keys.join '|'})\s*$/
+    /^help\s+(#{Arcanine::Trigger.help.keys.join '|'})\s*$/
   end
 
   def self.action(irc, cmd)
+		command = Arcanine::Trigger.help[cmd]
     aliases = ""
-    unless $help[cmd][:aliases].nil?
-      aliases = '[' + $help[cmd][:aliases].join('/') + '] '
+
+    unless command[:aliases].nil?
+      aliases = '[' + command[:aliases].join('/') + '] '
     end
-    irc.respond cmd + " #{aliases}- #{$help[cmd][:description]}"
+    irc.respond cmd + " #{aliases}- #{command[:description]}"
   end
 end
 
