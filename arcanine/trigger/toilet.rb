@@ -10,7 +10,7 @@ class Arcanine::Trigger::Toilet < Arcanine::Trigger
     /^(?:toilet|annoy|banner|ascii)\s+(.*)\s*$/
   end
 
-  def self.action(irc, text)
+  def self.action(arcanine, irc, text)
     File.popen 'toilet', 'w+' do |pipe|
         pipe.puts text
         pipe.close_write

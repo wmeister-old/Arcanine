@@ -9,7 +9,7 @@ class Arcanine::Trigger::Roll < Arcanine::Trigger
     /^roll\s*([1-9])d([2-9]\d*)\s*$/i
   end
 
-  def self.action(irc, num_dice, sides)
+  def self.action(arcanine, irc, num_dice, sides)
     nick      = irc.sender.nick
     roll      = num_dice + 'd' + sides
     results_a = roll num_dice.to_i, sides.to_i

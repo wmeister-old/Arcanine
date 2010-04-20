@@ -10,7 +10,7 @@ class Arcanine::Trigger::Date < Arcanine::Trigger
     /^(?:date|time)\s*$/i
   end
 
-  def self.action(irc)
+  def self.action(arcanine, irc)
     irc.respond Time.now.to_s
   end
 end

@@ -38,7 +38,7 @@ class Arcanine
 
     for file in files
       begin 
-        require file
+        load file
       rescue Exception => e
         puts "Error in #{file}: #{e}"
         exit
@@ -50,9 +50,10 @@ class Arcanine
   end
 
   def test_triggers(irc, msg)
-    puts "msg == #{msg}"
+    arcanine = self
+
     for trigger in Arcanine::Trigger.all
-      trigger.send :run, irc and break if trigger.send :match, msg
+      trigger.send :run, arcanine, irc and break if trigger.send :match, msg
     end
   end
 

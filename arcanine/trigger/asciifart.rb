@@ -10,7 +10,7 @@ class Arcanine::Trigger::AsciiFart < Arcanine::Trigger
     /^(?:asciifart|fart|af)$/i
   end
 
-  def self.action(irc)
+  def self.action(arcanine, irc)
     `fortune data/fortune.txt`.split(/\r?\n/).each { |line| irc.respond line }
   end
 end

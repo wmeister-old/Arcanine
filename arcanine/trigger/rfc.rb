@@ -9,7 +9,7 @@ class Arcanine::Trigger::RFC < Arcanine::Trigger
     /^rfc\s*([0-9]{1,4})\s*$/i
   end
 
-  def self.action(irc, num)
+  def self.action(arcanine, irc, num)
     irc.respond "http://www.ietf.org/rfc/rfc#{num}.txt"
   end
 end

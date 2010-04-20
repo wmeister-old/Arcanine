@@ -3,7 +3,7 @@ class Arcanine::Trigger::Commands < Arcanine::Trigger
     /^commands\s*$/i
   end
 
-  def self.action(irc)
+  def self.action(arcanine, irc)
     irc.respond Arcanine::Trigger.help.keys.join ', '
   end
 end

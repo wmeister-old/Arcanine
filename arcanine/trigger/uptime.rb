@@ -10,7 +10,7 @@ class Arcanine::Trigger::UpTime < Arcanine::Trigger
     /^(?:runtime|etime|up?time)\s*$/i
   end
 
-  def self.action(irc)
+  def self.action(arcanine, irc)
     irc.respond `ps --no-header -p #{$$} -o etime`.gsub /\s/, ''
   end
 end

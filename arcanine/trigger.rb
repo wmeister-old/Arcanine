@@ -27,8 +27,8 @@ class Arcanine
     	msg       =~ self.regex
   	end
 
-  	def self.run(irc)
-    	action(irc, *@@matches[1..-1])
+  	def self.run(arcanine, irc)
+    	action(arcanine, irc, *@@matches[1..-1])
   	end
 
   	def self.action

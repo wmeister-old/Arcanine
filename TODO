@@ -1,20 +1,6 @@
 To Do
 =====
 
-[X] 1. Get rid of global variables!!!
-
-[X] 2. Implement multiple server support
-
-[ ] 3. Implement bot owner authentication
-
-[X] 4. Add some way to join/watch channels - this needs to be dynamic
-
-[ ] 5. PRIVMSG support
-
-[X] 6. Move working trigger sub classes from bot-eval into seperate class files
-
-[X] 7. Make a method to load trigger sub classes
-
-[ ] 8. Add a reload trigger classes trigger
-
-[ ] 9. Add database support - possibly sqlite
+- Implement bot owner authentication
+- PRIVMSG support
+- Add database support - possibly sqlite using data mapper

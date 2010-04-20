@@ -3,7 +3,7 @@ class Arcanine::Trigger::Help < Arcanine::Trigger
     /^help\s+(#{Arcanine::Trigger.help.keys.join '|'})\s*$/
   end
 
-  def self.action(irc, cmd)
+  def self.action(arcanine, irc, cmd)
 		command = Arcanine::Trigger.help[cmd]
     aliases = ""
 
