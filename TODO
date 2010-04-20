@@ -1,22 +1,20 @@
 To Do
 =====
 
-[ ] 1. Get rid of global variables!!!
+[X] 1. Get rid of global variables!!!
 
-[ ] 2. Implement multiple server support
+[X] 2. Implement multiple server support
 
 [ ] 3. Implement bot owner authentication
 
-[ ] 4. Add some way to join/watch channels - this needs to be dynamic
+[X] 4. Add some way to join/watch channels - this needs to be dynamic
 
 [ ] 5. PRIVMSG support
 
-[ ] 6. Move working trigger sub classes from bot-eval into seperate class files
+[X] 6. Move working trigger sub classes from bot-eval into seperate class files
 
-[ ] 7. Make a method to load trigger sub classes
+[X] 7. Make a method to load trigger sub classes
 
 [ ] 8. Add a reload trigger classes trigger
 
-[ ] 9. Add a self.find_trigger method to the Trigger class
-
-[ ] 10. Add database support - possibly sqlite
+[ ] 9. Add database support - possibly sqlite
