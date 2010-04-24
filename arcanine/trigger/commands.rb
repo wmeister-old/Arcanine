@@ -4,7 +4,8 @@ class Arcanine::Trigger::Commands < Arcanine::Trigger
   end
 
   def self.action(arcanine, irc)
-    irc.respond Arcanine::Trigger.help.keys.join ', '
+    cmds = Arcanine::Trigger.help.keys
+    irc.respond "#{cmds.size} commands: #{cmds.sort.join ', '}"
   end
 end
 
