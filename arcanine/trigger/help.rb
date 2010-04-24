@@ -4,7 +4,7 @@ class Arcanine::Trigger::Help < Arcanine::Trigger
   end
 
   def self.action(arcanine, irc, cmd)
-		command = Arcanine::Trigger.help[cmd]
+    command = Arcanine::Trigger.help[cmd]
     aliases = ""
 
     unless command[:aliases].nil?

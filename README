@@ -1,12 +1,34 @@
-Arcanine
---------
+Arcanine is an IRC bot written in Ruby using the awesome on_irc library!
 
-- Arcanine is an IRC bot written in Ruby using the awesome on_irc library!
+Installation:
 
-- Arcanine aims to be pluggable, but is a longs way from it! :[
+  You will need git, ruby, and ruby gems. On Ubuntu you can install them all with:
 
-- Arcanine is full of messy code and bugs, some features are even broken, some features call programs that might not even be installed on certain systems.
+    $ sudo apt-get install git ruby rubygems
 
-- Arcanine is named after a pokemon!
+  Now make a clone of the Arcanine repository:
 
-- Arcanine is a work in progress.
+    $ git clone git@github.com:wmeister86/Arcanine.git
+
+  Install the on_irc gem:
+
+    $ gem install on_irc
+
+  Note: Some commands such as toilet and asciifart will not work unless you have te appropriate programs installed (toilet/fortune), and the correct data files inside the "data" directory. Fixing this shouldnt be any problem with a little knowledge of linux/ruby.
+
+Configuring the bot:
+
+  The configuration for the bot is in YAML. Look at the "example.config.yaml" and modify as needed. When your done rename it to "config.yaml".
+
+Running the bot:
+
+  $ ruby run.rb
+
+Adding new commands (aka "Triggers"):
+
+  Create a new file in arcanine/trigger, subclass Arcanine::Trigger. Define a regex and action method. Triggers can be reloaded while the bot is running using the reload trigger. Be sure to look at the other triggers for examples.
+
+
+
+
+

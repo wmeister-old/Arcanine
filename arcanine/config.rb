@@ -1,7 +1,7 @@
 require 'yaml'
 
 class Arcanine::Config
-  def initialize(config_file = 'config')
+  def initialize(config_file = 'config.yaml')
     @h = YAML::load File.read(config_file)
     puts @h.inspect
   end

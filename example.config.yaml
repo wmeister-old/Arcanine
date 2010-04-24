@@ -1,11 +1,11 @@
 --- 
-:realname: pokebot1986
+:realname: arcanine-bot
 :ident: arcanine
-:nick: arcanine2
+:nick: arcanine
 :servers: 
 - :channels: 
   - "#botters"
-  - "#arcanine"
+  - "#botters-test"
   :host: irc.freenode.net
   :name: freenode
   :port: 6667

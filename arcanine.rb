@@ -67,10 +67,10 @@ class Arcanine
     @bot.on :privmsg do
       if params[0][0,1] == '#' && arcanine.monitor[server.name].include?(params[0])
         if params[1][0,1] == arcanine.trigger_char
-          arcanine.test_triggers(self, params[1][1..-1])
+          arcanine.test_triggers self, params[1][1..-1]
         end
       elsif params[0][0,1] != '#'
-        # do something
+          arcanine.test_triggers self, params[1]
       end
     end
 
@@ -88,34 +88,3 @@ class Arcanine
     @bot.connect
   end
 end
-
-=begin
-
-if params[0][0,1] == '#'
-  if params[1][0,1] == $trigger_char
-    msg = params[1][1..-1]
-    for trigger in $triggers
-      trigger.send :run, self and break if trigger.send :match, msg
-    end
-  end
-end
-
-
-
-----------------------
-
-
-bot[:freenode].on :privmsg do
-  begin
-    eval File.new('bot-eval.rb').gets(nil)
-  rescue Exception => error_msg
-    puts error_msg
-  end
-end
-
-
-
-
-
-bot.connect
-=end
