@@ -2,6 +2,7 @@
 :realname: arcanine-bot
 :ident: arcanine
 :nick: arcanine
+:password: changeMe
 :servers: 
 - :channels: 
   - "#botters"

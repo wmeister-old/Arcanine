@@ -4,7 +4,7 @@ class Arcanine
     @@help = nil
 
     def self.inherited(subclass)
-      @@triggers << subclass
+      @@triggers << subclass if subclass != AuthenticatedTrigger
     end
 
     def self.all
@@ -28,7 +28,11 @@ class Arcanine
     end
 
     def self.run(arcanine, irc)
-      action(arcanine, irc, *@@matches[1..-1])
+      begin
+        action(arcanine, irc, *@@matches[1..-1])
+      rescue Exception => e
+        irc.respond "Error in trigger #{self}: #{e.message} - #{e.backtrace.join '; '}" 
+      end
     end
 
     def self.action

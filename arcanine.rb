@@ -1,15 +1,19 @@
 require 'on_irc'
 require 'arcanine/trigger'
+require 'arcanine/authenticated_trigger'
 
 class Arcanine
-  attr_reader :monitor, :trigger_char, :help
+  attr_reader   :trigger_char, :help, :password
+  attr_accessor :monitor, :authed_users
 
   def initialize(template)
+    @password = template[:password] || template['password'] or raise 'password must be set in configuation!'
     @trigger_char = template[:trigger_char] || template['trigger_char'] || '@'
     @realname = __realname = template[:realname] || template['realname']
     @ident = __ident = template[:ident] || template['ident']
     @servers = __servers = template[:servers] || template['servers']
     @nick = __nick = template[:nick] || template['nick']
+    @authed_users = []
     @triggers = []
     @monitor = {}
 
@@ -27,6 +31,10 @@ class Arcanine
     end
     load_triggers
   end
+
+  def authenticated(sender)
+    @authed_users.include? [sender.host, sender.nick]
+  end 
 
   def trigger_files
     Dir.glob(File.expand_path(File.dirname(__FILE__)) + '/arcanine/trigger/*.rb')
@@ -52,7 +60,7 @@ class Arcanine
   def test_triggers(irc, msg)
     arcanine = self
 
-    for trigger in Arcanine::Trigger.all
+    for trigger in Arcanine::Trigger.all + Arcanine::AuthenticatedTrigger.all
       trigger.send :run, arcanine, irc and break if trigger.send :match, msg
     end
   end
